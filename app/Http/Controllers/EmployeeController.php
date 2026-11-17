@@ -195,6 +195,7 @@ class EmployeeController extends Controller
             if ($employee->user) {
                 $employee->user->forceFill(['is_active' => false])->save();
             }
+            $employee->faceDescriptors()->delete();
             $employee->delete();
             $employee->user?->delete();
         });

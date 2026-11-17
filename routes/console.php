@@ -12,3 +12,8 @@ Artisan::command('inspire', function () {
 Schedule::command('attendance:mark-absent')
     ->everyTenMinutes()
     ->withoutOverlapping();
+
+// Hapus data wajah nonaktif yang melewati masa simpan (bawaan 90 hari) dan data wajah milik karyawan terhapus.
+Schedule::command('faces:purge-inactive')
+    ->dailyAt('02:00')
+    ->withoutOverlapping();

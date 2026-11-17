@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\AppNotification;
 use App\Support\SidebarMenu;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -18,6 +19,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrapFive();
+
+        if (!$this->app->isProduction()) {
+            Model::preventLazyLoading();
+            Model::handleLazyLoadingViolationUsing(function (Model $model, string $relation): void {
+                logger()->warning('Lazy loading terdeteksi (kemungkinan N+1): '.$model::class.'::'.$relation);
+            });
+        }
 
         // Menu sidebar dihitung per pengguna (role + fitur aktif).
         View::composer('layouts.partials.sidebar', function ($view) {

@@ -22,7 +22,7 @@
 <div class="rp-print">
     <div class="no-print rp-toolbar">
         <button type="button" class="hb-btn hb-btn-primary" data-print><i class="bi bi-printer me-1"></i> Cetak</button>
-        <button type="button" class="hb-btn hb-btn-light" onclick="window.close()">Tutup</button>
+        <button type="button" class="hb-btn hb-btn-light" data-close>Tutup</button>
     </div>
 
     <header class="rp-print-head">

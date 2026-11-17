@@ -1,5 +1,5 @@
 
-<script>
+<script nonce="{{ $cspNonce ?? '' }}">
     window.HB_FLASH = {{ Illuminate\Support\Js::from([
         'success' => session('success'),
         'error' => session('error'),
@@ -7,3 +7,4 @@
         'info' => session('info'),
     ]) }};
 </script>
+
