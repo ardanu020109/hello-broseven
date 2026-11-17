@@ -1,0 +1,250 @@
+/* Laporan kehadiran, payroll, slip gaji, dan tampilan cetak */
+
+.hb-filters [data-mode] {
+    display: inline-block;
+}
+.hb-filters .form-control[type="number"] {
+    width: auto;
+}
+
+.rp-rate {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 120px;
+}
+.rp-bar {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    background: #e9ecec;
+    overflow: hidden;
+}
+.rp-bar i {
+    display: block;
+    height: 100%;
+    background: var(--hb-primary);
+}
+.rp-flag {
+    color: #c0392b;
+    font-weight: 700;
+    margin-left: 2px;
+    cursor: help;
+}
+
+.rp-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-width: 820px;
+    margin: 0 auto 1rem;
+}
+
+/* Cetak laporan */
+.rp-print-body {
+    background: #fff;
+}
+.rp-print {
+    padding: 1rem 1.25rem;
+}
+.rp-print .rp-toolbar {
+    max-width: none;
+    margin-left: 0;
+}
+.rp-print-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 2px solid var(--hb-dark);
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.8rem;
+}
+.rp-print-head h1 {
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin: 0;
+}
+.rp-table {
+    font-size: 0.82rem;
+}
+.rp-table thead th {
+    background: #eef1f1 !important;
+    border-bottom: 1px solid #999;
+}
+.rp-table tfoot th {
+    border-top: 2px solid var(--hb-dark);
+}
+
+/* Slip gaji */
+.slip-page {
+    background: #eef1f1;
+    min-height: 100vh;
+    padding: 1.5rem 1rem;
+}
+.slip {
+    position: relative;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2rem 2.25rem;
+    background: #fff;
+    border: 1px solid var(--hb-border);
+    border-radius: 12px;
+    box-shadow: var(--hb-shadow);
+}
+.slip-draft {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-20deg);
+    font-size: 6rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    color: rgba(192, 57, 43, 0.08);
+    pointer-events: none;
+}
+.slip-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--hb-dark);
+}
+.slip-head h1 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin: 0;
+}
+.slip-logo {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+.slip-title {
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    margin: 1.25rem 0 0.75rem;
+}
+.slip-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.35rem 2rem;
+    margin-bottom: 1.25rem;
+}
+.slip-info div {
+    display: flex;
+    gap: 0.5rem;
+}
+.slip-info dt {
+    flex: 0 0 110px;
+    color: #6f6f6f;
+    font-weight: 500;
+}
+.slip-info dd {
+    margin: 0;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+.slip-table {
+    font-size: 0.9rem;
+}
+.slip-table thead th {
+    background: #eef1f1 !important;
+    border-bottom: 1px solid #999;
+}
+.slip-table tfoot th {
+    border-top: 2px solid var(--hb-dark);
+}
+.slip-net {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0 1.5rem;
+    padding: 0.9rem 1.1rem;
+    border-radius: 10px;
+    background: rgba(60, 110, 113, 0.1);
+    border: 1px solid rgba(60, 110, 113, 0.3);
+}
+.slip-net strong {
+    font-size: 1.4rem;
+    color: var(--hb-primary);
+}
+.slip-sign {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.slip-sign div {
+    width: 200px;
+    text-align: center;
+}
+.slip-sign span {
+    display: block;
+    font-size: 0.85rem;
+}
+.slip-sign i {
+    display: block;
+    height: 60px;
+    border-bottom: 1px solid #555;
+    margin-bottom: 0.25rem;
+}
+.slip-sub {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 1.25rem 0 0.5rem;
+}
+.slip-detail {
+    font-size: 0.8rem;
+}
+
+@media (max-width: 575.98px) {
+    .slip {
+        padding: 1.25rem;
+    }
+    .slip-info {
+        grid-template-columns: 1fr;
+    }
+    .slip-sign div {
+        width: 45%;
+    }
+}
+
+@media print {
+    body,
+    .slip-page,
+    .rp-print-body {
+        background: #fff !important;
+    }
+    .no-print {
+        display: none !important;
+    }
+    .slip-page {
+        padding: 0;
+    }
+    .slip {
+        max-width: none;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
+    }
+    .slip-detail {
+        page-break-before: always;
+    }
+    .rp-print {
+        padding: 0;
+    }
+    .rp-table thead {
+        display: table-header-group;
+    }
+    tr {
+        page-break-inside: avoid;
+    }
+    @page {
+        margin: 12mm;
+    }
+}

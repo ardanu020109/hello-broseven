@@ -1,0 +1,102 @@
+/* Data Jadwal: tab, chip hari, kalender, daftar centang */
+
+/* Tab */
+.hb-tabs { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; padding: 0; margin: 0 0 1rem; }
+.hb-tab {
+    display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.5rem 1rem;
+    border: 1px solid var(--hb-border); border-radius: 999px; background: var(--hb-white);
+    color: var(--hb-dark); font-size: 0.9rem; font-weight: 600; text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.hb-tab:hover { border-color: var(--hb-primary); color: var(--hb-primary); }
+.hb-tab.is-active { background: var(--hb-primary); border-color: var(--hb-primary); color: #fff; }
+
+/* Chip hari kerja */
+.hb-days { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.hb-day {
+    display: inline-block; min-width: 32px; padding: 0.15rem 0.3rem; border-radius: 6px; text-align: center;
+    font-size: 0.68rem; font-weight: 700; background: #eef1f1; color: #a0a0a0;
+}
+.hb-day.is-on { background: rgba(60, 110, 113, 0.15); color: var(--hb-primary); }
+
+/* Mode kerja */
+.hb-mode { display: inline-block; padding: 0.1rem 0.5rem; border-radius: 999px; font-size: 0.68rem; font-weight: 700; }
+.hb-mode-wfo { background: rgba(40, 75, 99, 0.12); color: var(--hb-secondary); }
+.hb-mode-wfh { background: rgba(60, 110, 113, 0.15); color: var(--hb-primary); }
+
+/* Form hari kerja */
+.hb-days-table tbody tr.is-off td { opacity: 0.55; }
+
+/* Segmented radio */
+.hb-segment { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.hb-segment label { margin: 0; cursor: pointer; }
+.hb-segment input { position: absolute; opacity: 0; pointer-events: none; }
+.hb-segment span {
+    display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.5rem 0.9rem;
+    border: 1px solid var(--hb-border); border-radius: 10px; font-size: 0.88rem; font-weight: 600;
+    background: var(--hb-white); transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.hb-segment input:checked + span { background: rgba(60, 110, 113, 0.12); border-color: var(--hb-primary); color: var(--hb-primary); }
+.hb-segment input:focus-visible + span { box-shadow: 0 0 0 0.2rem rgba(60, 110, 113, 0.25); }
+
+/* Daftar karyawan berkotak centang */
+.hb-checklist { max-height: 240px; overflow-y: auto; border: 1px solid var(--hb-border); border-radius: 10px; padding: 0.35rem; }
+.hb-check-item { display: flex; align-items: center; gap: 0.65rem; padding: 0.4rem 0.55rem; margin: 0; border-radius: 8px; cursor: pointer; }
+.hb-check-item:hover { background: rgba(60, 110, 113, 0.06); }
+.hb-check-item small { display: block; color: #7a7a7a; font-size: 0.78rem; }
+.hb-check-item[hidden] { display: none !important; }
+.hb-check-item .form-check-input:checked { background-color: var(--hb-primary); border-color: var(--hb-primary); }
+
+/* Toolbar kalender */
+.hb-cal-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.hb-cal-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.hb-cal-nav .hb-icon-btn { text-decoration: none; }
+.hb-cal-title { font-size: 1.1rem; font-weight: 700; margin: 0 0 0 0.4rem; }
+.hb-view-switch .btn { border: 1px solid var(--hb-border); color: var(--hb-dark); background: var(--hb-white); font-weight: 600; }
+.hb-view-switch .btn.is-active { background: var(--hb-primary); border-color: var(--hb-primary); color: #fff; }
+
+/* Kalender bulanan */
+.hb-cal-wrap { overflow-x: auto; }
+.hb-cal {
+    min-width: 760px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr));
+    border: 1px solid var(--hb-border); border-radius: 12px; overflow: hidden;
+}
+.hb-cal-dow {
+    padding: 0.55rem; background: #f4f6f6; border-bottom: 1px solid var(--hb-border); text-align: center;
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #6f6f6f;
+}
+.hb-cal-cell {
+    min-height: 108px; padding: 0.4rem 0.5rem; display: flex; flex-direction: column; gap: 0.2rem;
+    border-right: 1px solid #eee; border-bottom: 1px solid #eee; background: var(--hb-white);
+    font-size: 0.76rem; color: inherit; text-decoration: none; overflow: hidden;
+}
+.hb-cal > :nth-child(7n) { border-right: 0; }
+a.hb-cal-cell:hover { background: rgba(60, 110, 113, 0.06); color: inherit; }
+.hb-cal-cell.is-out { background: #fafafa; color: #b0b0b0; }
+.hb-cal-cell.is-out .hb-cal-time, .hb-cal-cell.is-out .hb-cal-count { color: #b0b0b0; }
+.hb-cal-num {
+    align-self: flex-start; min-width: 24px; height: 24px; padding: 0 0.3rem; display: inline-flex;
+    align-items: center; justify-content: center; border-radius: 12px; font-size: 0.8rem; font-weight: 700;
+}
+.hb-cal-cell.is-today .hb-cal-num { background: var(--hb-primary); color: #fff; }
+.hb-cal-holiday {
+    display: block; padding: 0.1rem 0.4rem; border-radius: 6px; background: rgba(224, 161, 0, 0.16);
+    color: #8a6200; font-size: 0.7rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.hb-cal-time { font-weight: 700; color: var(--hb-dark); white-space: nowrap; }
+.hb-cal-count { font-weight: 700; color: var(--hb-primary); }
+.hb-cal-sub { color: #6f6f6f; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hb-cal-muted { color: #9a9a9a; }
+.hb-cal-legend { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.85rem; font-size: 0.8rem; color: #6f6f6f; }
+.hb-cal-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+
+/* Kalender mingguan */
+.hb-week thead th.is-today, .hb-week td.is-today { background: rgba(60, 110, 113, 0.07); }
+.hb-week thead th span { font-weight: 400; color: #8a8a8a; text-transform: none; letter-spacing: 0; }
+.hb-week-holiday { color: #8a6200; font-weight: 700; text-transform: none; letter-spacing: 0; }
+.hb-week-cell { font-size: 0.8rem; min-width: 112px; }
+
+@media (max-width: 575.98px) {
+    .hb-tab { padding: 0.4rem 0.75rem; font-size: 0.82rem; }
+    .hb-cal-title { margin-left: 0; width: 100%; }
+}

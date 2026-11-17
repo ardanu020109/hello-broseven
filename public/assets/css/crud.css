@@ -1,0 +1,249 @@
+/* Halaman CRUD: filter, aksi tabel, modal, form, pager */
+
+.hb-btn-light {
+    background: #eef1f1;
+    color: var(--hb-dark);
+}
+.hb-btn-light:hover {
+    background: var(--hb-border);
+    color: var(--hb-dark);
+}
+.hb-btn-danger {
+    background: #c0392b;
+    color: #fff;
+}
+.hb-btn-danger:hover {
+    background: #a93226;
+    color: #fff;
+}
+
+/* Filter */
+.hb-filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+.hb-filters .form-select {
+    width: auto;
+    min-width: 150px;
+    max-width: 100%;
+}
+.hb-search {
+    position: relative;
+    flex: 1 1 260px;
+    max-width: 400px;
+}
+.hb-search > i {
+    position: absolute;
+    left: 0.85rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8a8a8a;
+    pointer-events: none;
+}
+.hb-search .form-control {
+    padding-left: 2.4rem;
+}
+
+/* Aksi baris */
+.hb-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.35rem;
+}
+.hb-icon-action {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--hb-border);
+    border-radius: 8px;
+    background: var(--hb-white);
+    color: var(--hb-secondary);
+    font-size: 1rem;
+    text-decoration: none;
+    transition:
+        background 0.2s,
+        border-color 0.2s,
+        color 0.2s;
+}
+.hb-icon-action:hover {
+    background: rgba(60, 110, 113, 0.1);
+    border-color: var(--hb-primary);
+    color: var(--hb-primary);
+}
+.hb-icon-action.is-danger {
+    color: #c0392b;
+}
+.hb-icon-action.is-danger:hover {
+    background: #fdecea;
+    border-color: #c0392b;
+    color: #a93226;
+}
+
+/* Sel karyawan */
+.hb-emp-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+.hb-thumb {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--hb-border);
+    flex: 0 0 auto;
+}
+.hb-thumb-lg {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 1px solid var(--hb-border);
+    flex: 0 0 auto;
+}
+
+/* Modal */
+.hb-modal {
+    border: 0;
+    border-radius: var(--hb-radius);
+    box-shadow: 0 20px 50px rgba(53, 53, 53, 0.25);
+}
+.hb-modal .modal-header {
+    border-bottom: 1px solid var(--hb-border);
+}
+.hb-confirm-icon {
+    width: 60px;
+    height: 60px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.7rem;
+}
+.hb-confirm-icon.is-danger {
+    background: #fdecea;
+    color: #c0392b;
+}
+.hb-confirm-icon.is-primary {
+    background: rgba(60, 110, 113, 0.12);
+    color: var(--hb-primary);
+}
+
+/* Form */
+.hb-form-section {
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+}
+.hb-form-section h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.hb-form-section h2 i {
+    color: var(--hb-primary);
+}
+.form-switch .form-check-input:checked {
+    background-color: var(--hb-primary);
+    border-color: var(--hb-primary);
+}
+.form-select:disabled option {
+    display: none;
+}
+
+/* Pager */
+.hb-pager {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+.pagination {
+    --bs-pagination-active-bg: var(--hb-primary);
+    --bs-pagination-active-border-color: var(--hb-primary);
+    --bs-pagination-color: var(--hb-primary);
+    --bs-pagination-hover-color: var(--hb-secondary);
+    --bs-pagination-focus-color: var(--hb-secondary);
+}
+
+/* Detail karyawan */
+.hb-dl-wide {
+    grid-template-columns: 170px 1fr;
+}
+.hb-doc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+}
+.hb-doc-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+.hb-doc-list li > i {
+    color: var(--hb-primary);
+}
+.hb-doc-list a,
+.hb-doc-list span {
+    margin-left: auto;
+    font-size: 0.88rem;
+}
+@media (max-width: 575.98px) {
+    .hb-dl-wide {
+        grid-template-columns: 1fr;
+        gap: 0.1rem;
+    }
+    .hb-dl-wide dd {
+        margin-bottom: 0.6rem;
+    }
+}
+
+/* ===== FIX MODAL AGAR BISA DI-SCROLL ===== */
+
+.modal-dialog-scrollable .modal-content {
+    max-height: calc(100vh - 1rem);
+    overflow: hidden;
+}
+
+.modal-dialog-scrollable .modal-content > form {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.modal-dialog-scrollable .modal-header,
+.modal-dialog-scrollable .modal-footer {
+    flex-shrink: 0;
+}
+
+.modal-dialog-scrollable .modal-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto !important;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Tampilan scrollbar */
+.modal-dialog-scrollable .modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-dialog-scrollable .modal-body::-webkit-scrollbar-thumb {
+    background: #b8c2c2;
+    border-radius: 10px;
+}

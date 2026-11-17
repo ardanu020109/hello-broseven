@@ -1,0 +1,53 @@
+/* Absensi: kamera, langkah verifikasi, kartu lokasi, registrasi wajah */
+
+.hb-cam {
+    position: relative; width: 100%; max-width: 640px; margin: 0 auto 1rem; aspect-ratio: 4 / 3;
+    background: #1d1f20; border-radius: 16px; overflow: hidden;
+}
+.hb-cam video, .hb-cam canvas {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    transform: scaleX(-1); /* tampilan cermin agar terasa seperti berkaca */
+}
+.hb-cam-guide {
+    position: absolute; left: 50%; top: 50%; width: 44%; height: 70%; transform: translate(-50%, -50%);
+    border: 3px dashed rgba(255, 255, 255, 0.5); border-radius: 50%; pointer-events: none;
+}
+.hb-cam-overlay {
+    position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.6rem; padding: 1rem; text-align: center; color: #fff; background: rgba(29, 31, 32, 0.82);
+}
+.hb-cam-overlay > i { font-size: 2.4rem; }
+.hb-cam-overlay[hidden] { display: none; }
+
+.hb-face-msg { padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.92rem; font-weight: 500; margin-bottom: 1rem; border: 1px solid transparent; }
+.hb-face-msg.is-info { background: rgba(40, 75, 99, 0.08); border-color: rgba(40, 75, 99, 0.2); color: var(--hb-secondary); }
+.hb-face-msg.is-success { background: rgba(60, 110, 113, 0.12); border-color: rgba(60, 110, 113, 0.3); color: var(--hb-primary); }
+.hb-face-msg.is-warning { background: rgba(224, 161, 0, 0.12); border-color: rgba(224, 161, 0, 0.35); color: #8a6200; }
+.hb-face-msg.is-error { background: #fdecea; border-color: #f5c2bd; color: #9b2c22; }
+
+.hb-steps { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: 0.4rem; font-size: 0.9rem; }
+.hb-steps li { display: flex; align-items: center; gap: 0.55rem; color: #8a8a8a; }
+.hb-steps li.is-active { color: var(--hb-secondary); font-weight: 600; }
+.hb-steps li.is-done { color: var(--hb-primary); font-weight: 600; }
+.hb-steps li.is-fail { color: #c0392b; font-weight: 600; }
+
+.hb-state-icon {
+    width: 72px; height: 72px; display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 50%; background: rgba(60, 110, 113, 0.12); color: var(--hb-primary); font-size: 2rem;
+}
+
+.hb-clock-mini { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 1.1rem; color: var(--hb-secondary); }
+
+.hb-gps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; }
+.hb-gps > div { padding: 0.6rem 0.7rem; border: 1px solid var(--hb-border); border-radius: 10px; }
+.hb-gps span { display: block; font-size: 0.72rem; color: #7a7a7a; }
+.hb-gps strong { font-size: 0.95rem; overflow-wrap: anywhere; }
+@media (max-width: 575.98px) { .hb-gps { grid-template-columns: 1fr; } }
+
+.hb-dots { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1rem; }
+.hb-dots span { width: 14px; height: 14px; border-radius: 50%; background: var(--hb-border); transition: background 0.2s, transform 0.2s; }
+.hb-dots span.is-on { background: var(--hb-primary); transform: scale(1.15); }
+
+.hb-consent-list { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: 0.5rem; font-size: 0.9rem; }
+.hb-consent-list li { display: flex; gap: 0.5rem; }
+.hb-consent-list i { color: var(--hb-primary); margin-top: 0.15rem; }

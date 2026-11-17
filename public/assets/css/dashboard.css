@@ -1,0 +1,103 @@
+/* Dashboard: kartu statistik, panel, grafik, tabel, badge status */
+
+.hb-date-chip {
+    display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.4rem 0.85rem;
+    border: 1px solid var(--hb-border); border-radius: 999px; background: var(--hb-white);
+    font-size: 0.85rem; color: var(--hb-dark);
+}
+.hb-section-title { font-size: 1.05rem; font-weight: 700; margin: 1.5rem 0 0.85rem; }
+
+/* ===== Kartu statistik ===== */
+.hb-stat {
+    display: flex; align-items: center; gap: 0.9rem; height: 100%;
+    padding: 1rem 1.1rem; background: var(--hb-white);
+    border: 1px solid var(--hb-border); border-radius: var(--hb-radius); box-shadow: var(--hb-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hb-stat:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(53, 53, 53, 0.12); }
+.hb-stat-icon {
+    flex: 0 0 48px; width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 12px; font-size: 1.35rem;
+}
+.hb-stat-body { min-width: 0; }
+.hb-stat-label { font-size: 0.82rem; color: #6f6f6f; font-weight: 500; }
+.hb-stat-value { font-size: 1.55rem; font-weight: 800; line-height: 1.2; overflow-wrap: anywhere; }
+.hb-stat-hint { font-size: 0.72rem; color: #8a8a8a; margin-top: 0.1rem; }
+
+.hb-stat-primary .hb-stat-icon   { background: rgba(60, 110, 113, 0.12); color: var(--hb-primary); }
+.hb-stat-secondary .hb-stat-icon { background: rgba(40, 75, 99, 0.12); color: var(--hb-secondary); }
+.hb-stat-dark .hb-stat-icon      { background: rgba(53, 53, 53, 0.1); color: var(--hb-dark); }
+.hb-stat-warning .hb-stat-icon   { background: rgba(224, 161, 0, 0.14); color: #b98200; }
+.hb-stat-danger .hb-stat-icon    { background: rgba(192, 57, 43, 0.12); color: #c0392b; }
+
+@media (max-width: 575.98px) {
+    .hb-stat { padding: 0.8rem; gap: 0.65rem; }
+    .hb-stat-icon { flex-basis: 40px; width: 40px; height: 40px; font-size: 1.15rem; }
+    .hb-stat-value { font-size: 1.2rem; }
+}
+
+/* ===== Panel ===== */
+.hb-panel { padding: 1.25rem; }
+.hb-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 1rem; }
+.hb-panel-title { font-size: 1rem; font-weight: 700; margin: 0; }
+.hb-panel-sub { font-size: 0.8rem; color: #7a7a7a; }
+.hb-link-sm { font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+.hb-link-sm:hover { text-decoration: underline; }
+
+/* ===== Grafik ===== */
+.hb-chart-svg { display: block; width: 100%; height: auto; }
+.hb-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.1rem; margin-top: 0.5rem; font-size: 0.82rem; }
+.hb-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+.hb-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex: 0 0 auto; }
+
+.hb-donut-wrap { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+.hb-donut { position: relative; width: 172px; height: 172px; border-radius: 50%; }
+.hb-donut-center {
+    position: absolute; inset: 26px; border-radius: 50%; background: var(--hb-white);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1;
+}
+.hb-donut-center strong { font-size: 1.6rem; }
+.hb-donut-center span { font-size: 0.72rem; color: #7a7a7a; }
+.hb-donut-legend { list-style: none; margin: 0; padding: 0; width: 100%; display: grid; gap: 0.5rem; font-size: 0.9rem; }
+.hb-donut-legend li { display: flex; align-items: center; gap: 0.5rem; }
+
+/* ===== Tabel ===== */
+.hb-table { --bs-table-bg: transparent; font-size: 0.9rem; }
+.hb-table thead th {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; color: #7a7a7a;
+    font-weight: 700; border-bottom: 1px solid var(--hb-border); white-space: nowrap;
+}
+.hb-table tbody td { border-bottom: 1px solid #efefef; padding-top: 0.7rem; padding-bottom: 0.7rem; }
+.hb-table tbody tr:last-child td { border-bottom: 0; }
+.hb-table tbody tr:hover td { background: rgba(60, 110, 113, 0.04); }
+
+/* ===== Badge status ===== */
+.hb-st, .hb-pill {
+    display: inline-block; padding: 0.22rem 0.65rem; border-radius: 999px;
+    font-size: 0.76rem; font-weight: 700; white-space: nowrap;
+}
+.hb-st-present, .hb-pill-success { background: rgba(60, 110, 113, 0.14); color: var(--hb-primary); }
+.hb-st-late,    .hb-pill-warning { background: rgba(224, 161, 0, 0.16); color: #8a6200; }
+.hb-st-absent,  .hb-pill-danger  { background: rgba(192, 57, 43, 0.12); color: #a3301f; }
+.hb-st-leave,   .hb-pill-info    { background: rgba(40, 75, 99, 0.12); color: var(--hb-secondary); }
+.hb-st-pending                   { background: rgba(224, 161, 0, 0.16); color: #8a6200; }
+.hb-pill-muted                   { background: var(--hb-border); color: var(--hb-dark); }
+
+/* ===== Jadwal hari ini ===== */
+.hb-sched-item { padding: 0.75rem 0; border-bottom: 1px solid #efefef; }
+.hb-sched-item:first-of-type { padding-top: 0; }
+.hb-sched-foot { margin-top: 0.9rem; padding: 0.75rem 0.9rem; background: #f4f6f6; border-radius: 10px; font-size: 0.88rem; }
+
+/* ===== Dashboard karyawan ===== */
+.hb-avatar-xl { width: 96px; height: 96px; font-size: 2.4rem; margin: 0 auto; }
+.hb-profile-photo { width: 96px; height: 96px; object-fit: cover; border-radius: 50%; border: 3px solid var(--hb-border); }
+.hb-dl-sm { grid-template-columns: 100px 1fr; font-size: 0.9rem; }
+.hb-mini { padding: 0.7rem 0.85rem; border: 1px solid var(--hb-border); border-radius: 10px; height: 100%; }
+.hb-mini span { display: block; font-size: 0.72rem; color: #7a7a7a; }
+.hb-mini strong { display: block; font-size: 0.98rem; overflow-wrap: anywhere; }
+.hb-clock { display: flex; align-items: center; gap: 0.85rem; padding: 0.9rem 1rem; border-radius: 12px; }
+.hb-clock > i { font-size: 1.6rem; }
+.hb-clock span { display: block; font-size: 0.75rem; opacity: 0.85; }
+.hb-clock strong { font-size: 1.5rem; line-height: 1.1; }
+.hb-clock-in { background: var(--hb-primary); color: #fff; }
+.hb-clock-out { background: var(--hb-secondary); color: #fff; }

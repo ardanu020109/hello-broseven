@@ -1,0 +1,48 @@
+/* Halaman login */
+body { background: var(--hb-white); }
+
+.hb-auth { min-height: 100vh; display: grid; grid-template-columns: 1.05fr 1fr; }
+
+.hb-auth-brand {
+    position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
+    padding: 2.5rem 3rem; color: #fff;
+    background: linear-gradient(135deg, var(--hb-primary) 0%, var(--hb-secondary) 100%);
+}
+.hb-auth-brand::before, .hb-auth-brand::after {
+    content: ""; position: absolute; border-radius: 50%; background: rgba(255, 255, 255, 0.07); pointer-events: none;
+}
+.hb-auth-brand::before { width: 380px; height: 380px; right: -120px; top: -100px; }
+.hb-auth-brand::after { width: 260px; height: 260px; left: -80px; bottom: -70px; }
+.hb-auth-brand > * { position: relative; z-index: 1; }
+
+.hb-auth-hero h1 { font-size: 2.3rem; font-weight: 800; line-height: 1.2; margin-bottom: 1rem; }
+.hb-auth-hero p { max-width: 460px; color: rgba(255, 255, 255, 0.85); font-size: 1.02rem; }
+.hb-auth-points { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: 0.7rem; }
+.hb-auth-points li { display: flex; align-items: center; gap: 0.7rem; font-weight: 500; }
+.hb-auth-points i {
+    width: 34px; height: 34px; display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 10px; background: rgba(255, 255, 255, 0.16);
+}
+.hb-auth-copy { color: rgba(255, 255, 255, 0.7); }
+
+.hb-auth-panel { display: flex; align-items: center; justify-content: center; padding: 2rem 1.25rem; background: var(--hb-white); }
+.hb-auth-card { width: 100%; max-width: 420px; }
+.hb-auth-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.35rem; }
+.hb-auth-mobile-brand { display: none; margin-bottom: 1.75rem; }
+
+.hb-input .input-group-text { background: #f4f6f6; border-color: var(--hb-border); color: #6b6b6b; }
+.hb-input .form-control { border-color: var(--hb-border); padding: 0.65rem 0.85rem; }
+.hb-input .hb-toggle-password { cursor: pointer; }
+.hb-input .hb-toggle-password:hover { color: var(--hb-primary); }
+.hb-input:focus-within .input-group-text { border-color: var(--hb-primary); }
+
+.hb-dev-box {
+    padding: 0.8rem 1rem; border: 1px dashed var(--hb-border); border-radius: 10px;
+    background: #fafbfb; font-size: 0.82rem; color: var(--hb-dark);
+}
+
+@media (max-width: 991.98px) {
+    .hb-auth { grid-template-columns: 1fr; }
+    .hb-auth-brand { display: none; }
+    .hb-auth-mobile-brand { display: inline-flex; }
+}

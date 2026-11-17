@@ -1,0 +1,28 @@
+/* Data Absensi, Request Izin, Riwayat Kehadiran */
+
+.hb-filters .form-control[type="date"],
+.hb-filters .form-control[type="month"] { width: auto; max-width: 100%; }
+
+/* Ringkasan */
+.hb-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
+.hb-chip {
+    display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.85rem; border-radius: 999px;
+    border: 1px solid var(--hb-border); background: var(--hb-white); color: var(--hb-dark);
+    font-size: 0.85rem; text-decoration: none;
+}
+.hb-chip-present { background: rgba(60, 110, 113, 0.1); border-color: rgba(60, 110, 113, 0.25); color: var(--hb-primary); }
+.hb-chip-late { background: rgba(224, 161, 0, 0.12); border-color: rgba(224, 161, 0, 0.3); color: #8a6200; }
+.hb-chip-absent { background: rgba(192, 57, 43, 0.1); border-color: rgba(192, 57, 43, 0.25); color: #a3301f; }
+.hb-chip-leave { background: rgba(40, 75, 99, 0.1); border-color: rgba(40, 75, 99, 0.25); color: var(--hb-secondary); }
+.hb-chip-link { font-weight: 600; transition: border-color 0.2s, background 0.2s; }
+.hb-chip-link:hover { border-color: var(--hb-primary); color: var(--hb-primary); }
+.hb-chip-link.is-active { background: var(--hb-primary); border-color: var(--hb-primary); color: #fff; }
+.hb-chip-note { font-size: 0.8rem; color: #7a7a7a; margin-left: auto; }
+
+/* Riwayat / timeline */
+.hb-timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--hb-border); display: grid; gap: 1rem; }
+.hb-timeline li { position: relative; }
+.hb-timeline li::before {
+    content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.35rem; width: 10px; height: 10px;
+    border-radius: 50%; background: var(--hb-primary); border: 2px solid var(--hb-white);
+}

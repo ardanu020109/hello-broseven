@@ -1,0 +1,57 @@
+/* Hello BroSeven! - design tokens */
+:root {
+    --hb-dark: #353535;
+    --hb-primary: #3c6e71;
+    --hb-white: #ffffff;
+    --hb-border: #d9d9d9;
+    --hb-secondary: #284b63;
+
+    --hb-radius: 14px;
+    --hb-radius-sm: 8px;
+    --hb-shadow: 0 6px 24px rgba(53, 53, 53, 0.08);
+    --hb-transition: 0.2s ease;
+
+    /* sambungkan token ke variabel Bootstrap */
+    --bs-body-color: var(--hb-dark);
+    --bs-body-bg: var(--hb-white);
+    --bs-border-color: var(--hb-border);
+    --bs-primary: var(--hb-primary);
+    --bs-primary-rgb: 60, 110, 113;
+    --bs-link-color: var(--hb-primary);
+    --bs-link-hover-color: var(--hb-secondary);
+    --bs-body-font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+    background: #f6f7f7;
+    color: var(--hb-dark);
+}
+
+.hb-card {
+    background: var(--hb-white);
+    border: 1px solid var(--hb-border);
+    border-radius: var(--hb-radius);
+    box-shadow: var(--hb-shadow);
+}
+
+.hb-btn {
+    border: 0;
+    border-radius: var(--hb-radius-sm);
+    padding: 0.55rem 1.1rem;
+    font-weight: 600;
+    transition: transform var(--hb-transition), background var(--hb-transition);
+}
+.hb-btn:hover { transform: translateY(-1px); }
+.hb-btn-primary { background: var(--hb-primary); color: var(--hb-white); }
+.hb-btn-primary:hover { background: #335d60; color: var(--hb-white); }
+.hb-btn-secondary { background: var(--hb-secondary); color: var(--hb-white); }
+.hb-btn-secondary:hover { background: #213f53; color: var(--hb-white); }
+
+.hb-badge-ok {
+    background: rgba(60, 110, 113, 0.12);
+    color: var(--hb-primary);
+    border-radius: 999px;
+    padding: 0.25rem 0.7rem;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
