@@ -8,7 +8,7 @@
     <link rel="icon" type="image/svg+xml" href="{{ asset('assets/images/logo.svg') }}">
 
     {{-- Pulihkan status sidebar sebelum render agar tidak berkedip --}}
-    <script>
+    <script nonce="{{ $cspNonce ?? '' }}">
         try {
             if (window.matchMedia('(min-width: 992px)').matches && localStorage.getItem('hb.sidebar') === 'collapsed') {
                 document.documentElement.classList.add('sidebar-collapsed');

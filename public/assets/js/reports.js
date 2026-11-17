@@ -29,4 +29,8 @@
     if (periodModal && periodModal.dataset.reopen === '1' && window.bootstrap) {
         bootstrap.Modal.getOrCreateInstance(periodModal).show();
     }
+
+    document.querySelectorAll('[data-close]').forEach(function (btn) {
+        btn.addEventListener('click', function () { window.close(); });
+    });
 })();

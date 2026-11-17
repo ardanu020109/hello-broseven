@@ -13,8 +13,10 @@ use Illuminate\View\View;
 
 class AuthController extends Controller
 {
-    private const MAX_ATTEMPTS = 5;
+    private const MAX_ATTEMPTS = 5;        // per kombinasi login + IP
     private const DECAY_SECONDS = 60;
+    private const IP_MAX_ATTEMPTS = 20;    // per IP, berapa pun username-nya
+    private const IP_DECAY_SECONDS = 300;
 
     public function showLogin(): View
     {
@@ -33,9 +35,11 @@ class AuthController extends Controller
         ]);
 
         $throttleKey = Str::transliterate(Str::lower($data['login']).'|'.$request->ip());
+        $ipKey = 'login-ip:'.$request->ip();
 
-        if (RateLimiter::tooManyAttempts($throttleKey, self::MAX_ATTEMPTS)) {
-            $seconds = RateLimiter::availableIn($throttleKey);
+        if (RateLimiter::tooManyAttempts($throttleKey, self::MAX_ATTEMPTS)
+            || RateLimiter::tooManyAttempts($ipKey, self::IP_MAX_ATTEMPTS)) {
+            $seconds = max(RateLimiter::availableIn($throttleKey), RateLimiter::availableIn($ipKey));
 
             throw ValidationException::withMessages([
                 'login' => "Terlalu banyak percobaan login. Coba lagi dalam {$seconds} detik.",
@@ -54,6 +58,7 @@ class AuthController extends Controller
 
         if (!Auth::attempt($credentials, $request->boolean('remember'))) {
             RateLimiter::hit($throttleKey, self::DECAY_SECONDS);
+            RateLimiter::hit($ipKey, self::IP_DECAY_SECONDS);
 
             throw ValidationException::withMessages([
                 'login' => 'Email/username atau password salah, atau akun tidak aktif.',
