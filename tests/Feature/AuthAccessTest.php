@@ -33,11 +33,9 @@ class AuthAccessTest extends TestCase
         $this->post('/login', ['login' => 'admin', 'password' => 'salah-sekali'])->assertSessionHasErrors('login');
         $this->assertGuest();
 
-        $this->post('/login', ['login' => 'tidak-ada', 'password' => 'salah-sekali']);
-        $this->assertSame(
-            'Email/username atau password salah, atau akun tidak aktif.',
-            session('errors')->first('login')
-        );
+        // Pesan sama persis untuk akun yang tidak ada: tidak membocorkan keberadaan akun
+        $this->post('/login', ['login' => 'tidak-ada', 'password' => 'salah-sekali'])
+            ->assertSessionHasErrors(['login' => 'Email/username atau password salah, atau akun tidak aktif.']);
     }
 
     public function test_passwords_are_hashed(): void

@@ -176,7 +176,7 @@ class AttendanceService
             'mode' => $state['mode'],
             'late_minutes' => $lateMinutes,
             'method' => $method,
-            'distance_m' => $location['distance'] !== null ? round($location['distance'], 1) : null,
+            'distance_m' => isset($location['distance']) ? round($location['distance'], 1) : null,
         ]);
 
         return $record;
@@ -224,7 +224,7 @@ class AttendanceService
         AuditLog::record('check_out', $record, null, [
             'method' => $method,
             'early' => $early,
-            'distance_m' => $location['distance'] !== null ? round($location['distance'], 1) : null,
+            'distance_m' => isset($location['distance']) ? round($location['distance'], 1) : null,
         ]);
 
         return $record;

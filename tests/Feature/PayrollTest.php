@@ -55,7 +55,7 @@ class PayrollTest extends TestCase
         $this->create('2026-12')->assertSessionHasErrors('month');   // masa depan
         $this->create('2026-10');
         $this->create('2026-10')->assertSessionHasErrors('month');   // duplikat
-        $this->create('2026-03')->assertSessionHas('error');         // tidak ada hari kerja yang dihitung (tanpa data)
+        $this->create('2025-12')->assertSessionHas('error');
     }
 
     public function test_rule_changes_do_not_alter_a_draft_until_recalculated_and_finalize_uses_the_snapshot(): void

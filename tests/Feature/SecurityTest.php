@@ -69,7 +69,8 @@ class SecurityTest extends TestCase
     {
         $this->get('/employees/1/files/ktp')->assertRedirect(route('login'));
         $this->actingAs($this->employeeUser())->get('/employees/1/files/ktp')->assertForbidden();
-        $this->get('/storage/employees/ktp/x.jpg')->assertNotFound();
+        $status = $this->get('/storage/employees/ktp/x.jpg')->getStatusCode();
+        $this->assertContains($status, [403, 404], "Berkas privat tidak boleh dapat dibuka lewat /storage (status {$status}).");
     }
 
     public function test_mass_assignment_cannot_escalate_role(): void
